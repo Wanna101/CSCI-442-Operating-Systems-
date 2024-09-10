@@ -1,0 +1,7 @@
+September 20, 2022
+
+Thread Management 
+
+Kernel Threads
+- A kernel thread is a thread that the OS knows about
+- switiching b/w kernel thread

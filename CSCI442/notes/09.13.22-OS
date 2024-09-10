@@ -1,0 +1,122 @@
+September 13, 2022
+
+Outline:
+Operating System Structure
+Program vs. Process
+Creating a process : fork()
+Executing a program with exec()
+How to implement a simple shell?
+Interprocess communication (IPC) - pipe
+
+*insert User/kernal mode slide*
+
+Program vs. Process
+- a program is an executable file, and a process is an instance of the program in execution
+- Many processes can execute simultaneously on LINUX system.
+- The main active entities in a Linux system are the processes
+
+Process is an active entity...
+
+Special processes
+- Every process has a unique process ID, a nonneg in.
+- The process ID 0 is a scheduler process and is often known as the swapper
+- The process ID 1 is the init process and is invoked by the kernel at the end of the bootsrap procecss
+- The process ID 2 2 is the pagedaemon. Theis process is responsible for supporting 
+
+Init Porcess
+- The program file for this process was /sbin/init
+- this process is responsible for bringing up a Linux/Unix system after the kernel has been boot strapped. 
+- init usually reads the system-dependent initialization filesand brings sys to a certain state
+- the init process never dies
+- it is a normal user process
+- later we will see how init becomes the parent process of any orphaned processes
+
+Daemons
+- On a large sys there may be hundreds or even thousands of processes running
+- even when the user absent, several processes, called "daemons", are running. These are sarted by a shell script when the system is booted
+- A typical daemon is the cron daemon. it wakes up at specified time and checks if there is any work to do. If do it does the work. Then it goes back to sleep unitl it is time for the next check.
+- The daemon is neede because it is possible in Linux to schedule activities minutes, hours, days, or even months in the future.
+
+Process context
+The context of a process consists of its (user) address space and the contents of hardware registers and kernel data structures that relaate to the process
+- the PC specifies the add. of the next instruct the CPU will init.
+
+Process life-cycle
+- The process that invokes fork is called parent process, and the newly created process is called child process
+- the kernel does the following sequence of operations for fork
+	- it allocates a slot in the process table for the new process
+	- it assigns an unique ID number to the child process
+	- it makes a logical cp of the context of the parent process
+	- it return child process ID to the parent process, and 0 to the child process
+	- some operations w/ files.... (for later)
+
+#include <sys/types.h>
+#include <unistd.h>
+
+pid_t fork(void);
+
+Returns: 0 in child, process ID of a child in parent, -1 on error.
+
+pid_t getpid(void); process ID of calling process
+pid_getppid(void);
+
+A Unix Process
+
+How Fork Works
+
+pid = 25
+cpid = 26
+
+<...>
+int cpid = fork();
+if (cpid == 0) {
+	<child code>
+	exit(0);
+}
+
+<parent code>
+wait(cpid);
+
+After the Fork...
+
+pid = 26
+cpid = 0
+
+<...>
+int cpid = fork();
+if (cpid == 0) {
+	<child code>
+}
+
+<parent code>
+wait(cpid);
+
+Where you are using fork?
+- Network servers?
+- Shell
+
+six exec functions:
+#include <unistd.h>
+
+int execl (const char *pathname, const char * arg)
+
+
+exec()
+- fork() is to create a new process (the child) theath then causes another program to be executed by calling on eof exec functions.
+- When a process calls one of the exec functions, that process is completely replacced by the new program, and the new ptoram starts exec at its main funct
+- the process ID does not change accres an exec bc a new process is not created
+
+How shell executes commands
+**** slides relate GREATLY TO PROJECT TWO
+
+
+Interprocess communication
+- processes frequently need to communicate w/ other processes
+- for example =shell pipeline, the output of the first process must be passed to the second process, and so on down to the line. 
+So, there is a need for communications b/w processes.
+- There arte threee issues here: 
+	- how cone process can pass info to another
+	- making sure two or more processes don't get in each others way
+	- Proper sequencing when dependencies are present
+
+	

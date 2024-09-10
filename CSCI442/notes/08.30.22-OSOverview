@@ -1,0 +1,94 @@
+August 30, 2022
+
+Last time where we left off...
+
+Single Choice Question:
+A device controller informs a device dreiver it has completed an I/O operation using_______.
+- direct memory access (DMA)
+- an interrupt handler
+- an interrupt
+
+Answer: an interrupt
+
+Memory Protection:
+- Architecture must provide support so that the OS can
+	- protect user programs from each other, and
+	- protect OS from user programs
+- The simplest technique is use base and limit registers
+- Base and limit registers are loaded by the OS before starting a program
+- The CPU checks each user reference, ensuring it falls b/w the base and limit register values
+
+- Operating system is also in the main memory
+	- every time a job is set up, a base and limit register is set up
+
+- Def'n: Timesharing (Multitasking) - logical extension in which CPU switches jobs so frequently that users can interact w/ each job while it is running, creating INTERACTIVE computing
+	- RESPONSE TIME should be < 1 sec
+	- Each user has at least one program executing in mmr -> PROCESS
+	- If several jobs ready to run at the same time -> CPU SCHEDULING
+	- If processe don't fit in memory, SWAPPING moves them in and out ot run
+	- VIRTUAL MEMORY allows execution of processes not completely in mmr
+
+*insert Migration of Data*
+
+Storage Hierachy:
+- Storage systems organized in hierarchy
+	- Speed
+	- Cost
+	- Volatility
+- Def'n: Caching - copying information into faster storage system; main mmr can be viewed as a chache for secondary storage
+	- Cache is expensive and is therefore limited in size 	
+- Def'n: Device Driver - for each controller to manage I/O
+	- provides uniform interface b/w controller and kernel
+
+Mass-Storage Management:
+- Usually disks used to store data that does not fit in main mmr
+- data that must be ke0t for a "long" period of time
+- Entire speed of computer ooperation hinges on disk subsystem and its algorithms
+- OS activities
+	- Free-space management
+	- Storage allocation
+	- Disk scheduling
+- Some storage doesn't need to be fast
+	- tertiary sotrage includes optical storage, magnetic tape
+	- Still must be managed - by OS or applications
+	- Varies b/w WORM (write-once, read-many-times) and RW (read-write)
+
+*insert Memory Hierarchy*
+
+Caching:
+- important principle, performed at many levels in a computer (in hardware, operating system, software)
+- information in use copied from slower to faster storage temporarily
+- faster storage (cache) checked first to determine if information is ther
+	- if it is, information used directly from the cache (fast) -- HIT
+	- if not, data copied from main mmr to cache and used there
+- Cache smaller than storage being cached
+	- Cache management important design problem
+	- Cache size and REPLACEMENT POLICY
+		- Replacement Policy: how do you want to update the cache table?
+
+Caches:
+- Access to main mmr: "expensive" (100 cycles)
+- Caches: small, fast, expensive mmr
+
+Single Choice Question:
+Which of the following forms of the storage has the largest capacity?
+- registers
+- hard-disk drives
+- nonvolatile mmr (you don't lose data)
+
+Answer: hard-disk drives
+
+Instruction Execution:
+- A program consists of a set of instructions stored in mmr:
+	- Two steps:
+		- processor reads instructions from mmr
+		- processor executes each instruction
+
+*insert pipeline*
+
+Instruction Fetch and Execute:
+- The processor fetches an instruction from mmr
+- typically the program counter (PC) holds the address of the next instruction to be fetched
+	- PC is incremented after each fetch
+
+*insert Instruction Register*

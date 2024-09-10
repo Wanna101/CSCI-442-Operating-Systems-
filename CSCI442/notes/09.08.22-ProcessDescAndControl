@@ -1,0 +1,113 @@
+Septemeber 08, 2022
+
+Five-State Process Model
+
+	admit		dispatch		  I/O or event wait 		 ready
+new ----> ready --------> running -----------------> waiting -----
+
+*insert slide*
+
+Mmry Layout of a C program
+*insert slide*
+- you read how long it is, you have limitation for file reading if you used a fixed number
+ex. values = (int *)malloc(sizeof(int) *5); => 5 is fixed
+
+Practice Questions:
+1. The convention in modern OS and compilers is that the _____ of a process contains tmp data such as function params, return addresses and local vars.
+- text section
+- data section
+- stack
+Answer: stack
+
+2. A process control block ____
+- contains a process' states
+- stores the executable code the process will run
+- deterimes which process is to be run next
+Answer: contains a process' states
+
+Two-State Process Model:
+a. single-blocked queue
+vs.
+b. multiple-blocked queues
+Theoretically OS will scan all the blocks in the queues before it moves on...
+
+Suspended Processes:
+- What will happen if we run out of process mmr?
+- Swapping 
+	- invovles moving part of all of a process from main mmr to disk
+	- when none of the processes in main mmr is in the ready state, the OS swaps one of the blocked processes out on to disk into a suspend queue
+
+DISK <======== MAIN MMR
+
+*insert Figure 3.9*
+- When all of the processes in main mmr are in the Blocked state, the OS can suspend one process by putting it in the Suspend state and transferring it to disk. The space that is freed in main mmr can then be used to bring in another process
+
+*insert new State Figure 3.9*
+*** POTENTIAL EXAM QUESTION*** fill in the different states
+
+- want to add new state:
+- Blocked -> Blocked/Suspend: If there are no ready processes, then at least one blocked process is swapped out to make room for another process that is not blocked
+- Blocked Suspend -> Ready/Suspend: A process in the Blocked/Suspend state is moved to the Ready/Suspend state when the event for which it has been waiting occurs
+- Ready/Suspend -> Ready: When there are no ready processes in main mmr, the OS will need to bring one in to continue execution
+- Ready -> Ready/Suspend: Normally the OS would prefer to suspend a blocked process rather than a ready one b/c the ready process can now be executed, whereas the blocked process is taking up main mmr space and can't be executed
+
+Characteristics of a Suspended Process:
+- The process may or may not be waiting for an event
+- The process is not immediately available for execution
+- The process was placed in a suspended state by an agent: either itself, a parent process, or the OS, for the purpose of preventing its execution
+- The process may not be removed from this state until the agent explicity orders the removal
+
+Reasons for Process Suspension:
+- Swapping
+- Other OS reason
+- Interactive User Request
+- Timing
+- Parent process request
+
+Process and Resource Management:
+*insert slide*
+dashed liine: you are waiting 
+
+What is a mmr table?
+- used to keep track of both main (real) and secondary (virtual) mmr
+- process are maintained on secondary mmr using some sort of virtual mmr or simple swapping mechanism
+Must Include:
+- allocation of main mmr to processes
+- allocation of secondary mmr to processes 
+- protection attributes of blocks of main or virtual mmr
+- info needed to manage virtual mmr
+
+I/O tables
+- Used by OS to manage I/O devices and channels of the computer system 
+- At any given time, an I/O device may be available or assign to a particular process
+- If an I/O operation is in progress, the OS needs to know: 
+	- the status of the I/O operation
+	- the location in main mmr being used as the source or destination of I/O transfer
+
+User Processes in Virtual Mmr:
+
+Process Identification
+----------------------
+Process State Info
+---------------------
+Process Control Info
+-------------------
+
+User Stack
+
+--------------------
+
+Private User
+Address Space
+(Programs, Data)
+
+---------------------
+
+Shared
+Address
+Space
+
+--------------------
+
+*insert Process Control Structures*
+

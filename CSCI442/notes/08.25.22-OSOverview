@@ -1,0 +1,53 @@
+August 25, 2022
+
+Overview of OS:
+- What is OS
+- History of OS
+- Top view of OS
+
+History of OS:
+- Single Use Computers: hardware was expensive, humans - cheap, ONE user at a time on the console, ONE function at a time
+	- multiple users = inefficient use of machine
+
+- batch Processing: execute multiple "jobs" in batch (load program, run, print results/dump machine state, repeat)
+
+- overlap I/O and Computation: Before, Machine waits for I/O to complete, more effienct use of machine, still one job at a time
+
+- multi-programming: several programs to run simultaneously, OS manages interactions
+
+Protection:
+Kernel mode vs. User mode
+- to protect system from aberrant users and processors, some instructions are restricted to use only by the OS
+- Users may not:
+	- address I/O directly
+	- use instructions that manipulate state of mmr
+	- set mode bits that determine user/kernel mode
+	- disable and enable interrupts
+	- halt the machine
+- in kernel mode the OS can do all of this
+
+Dual mode:
+- Increasingly CPUs support multi-mode operations
+	- i.e. virtual manager (VMM) mode for guest VMs
+
+Crossing Protection Boundaries:
+- System Call: OS procedure that executes priviledged instructions (e.g., I/O); API exported by the kernel
+
+Multiple Choice Question:
+Which of the following instructions can be performed in user mode?
+- set value of timer
+- read the clock
+- clear mmr
+- issue trap instruction
+- turn off interrupts
+- modify entries in device status table.
+- switch from user to kernel mode
+- access I/O device
+
+Answer: 2,4,7
+
+Single Choice Question:
+A device controller informs a device driver that it has completed  an I/O operation using________.
+- direct mmr access
+- an interrupt handler
+- an interrupt

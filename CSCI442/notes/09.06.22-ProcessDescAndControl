@@ -1,0 +1,47 @@
+September 06, 2022
+
+Two-State Process Model
+*insert Two-State Process Model*
+
+Process State Queue
+- The OS maintains the PCBs of all the processes in state queues.
+- The OS placeds the PCBs of all the processes in the same execution state in the same queue.
+- When the OS changes the state of a process, the PCB is unlinked from its current queue and move to its new state queue
+
+Examples of Process Queues
+- Ready Queue is called a Linked List
+*insert Example of Process queues*
+
+CPU Switch from Process to Process
+*insert CPU switch from Process to Process*
+
+Reasons for Process Creation
+-New batch job: The OS is procided with a batch job ccontrol stream, usally on tape or disk. When the OS is prepared to take on new work, it will read the next sequence of job control commands.
+- Interactive logon: A user at a terminal logs on to the system.
+- Created by OS to provide a service: The OS can create a process to perform a function on behalf of a user program w/o user having to wait
+- Spawned by existing processes: For purposes of modularity or to exploit parallelism, a user program can dictate the creation of a number of processes
+
+Process Creation:
+- Process spawning: when the OS creates a process at the explicit request of another process
+- Process creation: is the original, creating, process 
+- Child process is the new process
+
+- Difference b/w fork() and exec():
+Fork: starts a new process which is a copy of the main process
+Exec: replaces the current process image w/ new one, same pid
+
+Reasons for Process Termination:
+- Normal completion
+- time limit exceeded
+- mmr unavailable
+- bounds violation
+- protection error
+- arithmetic error 
+- time overrun
+- I/O failure
+- Invalid Instruction
+- Priviledged instruction
+- Data misuse
+- operator or OS intervention
+- parent termination
+- parent request

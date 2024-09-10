@@ -1,0 +1,17 @@
+September 1, 2022
+
+Continuing off of Lecture 3 OS Overview Slides
+
+Common Functions of Interrupts 
+- Interrupt transfers control to the interrupt service routine
+- INTERRUPT VECTOR, which contains the address of service routines
+- Interrupt architecture must save the address of the interrupted instruction
+- a TRAP or EXCEPTION is a software-generated interrupt caused by either an error or a user request
+- an operating system is INTERRUPT DRIVEN
+
+*insert interrupt timeline*
+
+*insert DMA*
+
+DMA
+- opening tunnel from IO device

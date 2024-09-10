@@ -1,0 +1,71 @@
+September 15, 2022
+
+Threads:
+Processes and threads 
+- Multithreading
+- thread functionality
+
+Processes...
+- Resource Ownership
+	- Process includes a virtual address space to hold the process image
+		- the OS performs a protection function to prevent unwanted interference b/w processes wrt resourcs
+- Scheduling/Execution
+	- Follows an execution path that may be intterleaved w/ other processes
+		- a process has an execution state (Running, Ready, etc.) and a dispatching priority and is scheduled and dispatched by the OS
+
+Motivation
+- Process creation is heavy-weight while thread-creation is light-weight
+- Most modern applications are multithreaded
+- Threads run w/in application as a fundamental unit of CPU utilization
+- Multiple tasks w/ the application can be implemented by separate threads
+	- update display
+	- fetch data
+	- spell checking
+	- answer a network request
+- Ex. Word Processor
+	- Thread -> display graphics
+	- Thread -> keystrokes for users
+	- Thread -> checking spelling and grammar
+	- Thread -> cheacking source version upgrade
+
+Processes and Threads
+- the unit of dispatching is referred to as a THREAD or LIGHTWEIGHT PROCESS
+- the unit of resource ownership is referred to as a PROCESS or TASK
+- MULTITHREADING - ability of OS to support multiple, concurrent paths of execution w/in a single process
+
+Threads:
+Each thread has its own stack, PC, registers
+
+Thread Process:
+- A process defines the address space, text, resources, etc.
+- A thread defines a ginle sequential execution stream w/in a process (PC, stack ,register)
+- threads extract the control info from the process
+- threads are bound to a single process
+- each process may have multiple threads of contorol w/in it
+
+Single Threaded Approaches: A single thread of execution per process, in which the concept of a thread is not recognized, is referred to as a single-threaded approach 
+
+Multithreaded Approaches: A Java run-time environment is an example of a system of one process w/ multiple threads
+Modern OSs: Multiple process, multiple threads
+
+Why use threads?
+- large multiprocessors/multi-core systems need many computing entiteis (one per CPU or core)
+- Swithcching b/w processes incurs high overhead
+- w/ threads, an application can avoid per process overheads
+- SIngle threaded process: blocking system calls, no concurrency/parallelism
+- Mulit-threaded process: blocking system calls with parallelism
+- threads retain the idea of sequential processes with blocking system calls
+
+Ex of Multi-threaded clients Ex: Web Browsers
+- Browsers such as IE are multi-threaded
+- Such browsers can display data before entire document is downloaded: performs multiple simultaneous tasks
+
+Multi-threaded Server Ex
+- Apache web server: pool of pre-spawned worker threads
+- Dispatcher thread waits for requests("master slave" architecture)
+- For each request , choose an idle worker thread
+- worker thread uses blocking system calls to service web request
+
+Kernel Threads
+- the kernel must manage and schedule threads, but it can use the same CPU process scheduling lagorithms
+- Swithching b/w kernel threads is slightly fastser than switching b/w processes

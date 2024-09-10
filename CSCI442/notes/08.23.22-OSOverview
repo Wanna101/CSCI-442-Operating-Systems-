@@ -1,0 +1,44 @@
+August 23, 2022
+
+Operating System:
+- Operating System (OS) is a collection of software that manages computer hardware resources
+	- exploits the hardware resources of one or more processors 
+	- provides set of services to system users 
+	- manages secondary mmr and I/O devices
+
+Overview:
+- basic elements
+- evol'n of the microprocessor
+- instruction execution
+- interrupts
+	- interrupts and the instruction cycle
+	- interrupt processing
+	- multiple interrupts
+- the mmr hierarchy
+- cache mmr 
+	- motivation
+	- cache principles
+	- cache design
+- direct mmr access
+- multiprocessor and multicore organization	
+	- symmetric multiprocessors
+	- multicore CPUs
+
+Basic elements:
+- Processor
+- I/O modules
+- Main mmr
+- System Bus
+
+Processor:
+- Controls the operation of the computer
+- Performs the data processing functions
+- Referred to as the Central Processing Unit (CPU)
+
+Main mmr:
+- Stores data and programs	
+- Typically volatile
+	- contents of the mmr is lost when the computer is shut down
+- referred to as real mmr or primary mmr
+
+	

@@ -1,0 +1,60 @@
+September 1, 2022
+
+Chapter 3: Process Description and Control
+
+OS MAnagement of Application Execution:
+- resources are made available to multiple applications
+- the processor is switched among multiple applications so all will appear to be progressing
+- the processor and I/O devices can be used efficiently 
+
+Process Concept
+- An operating system executes a variety of programs
+	- batch system - JOBS
+	- time-shared systems - USER PROGRAMS or TASKS
+
+- The terms JOB and PROCESS almost interchangeably
+
+- PROCESS - a program in execution; process execution must progress in sequential fashion
+
+- Program is PASDSIVE entity stored on disk (EXECUTABLE FILE), process is ACTIVE
+	- Program becomes process when executable file loaded into memory
+
+*insert slide*
+
+Process Concept:
+- the program code , also called TEXT SECTION
+- DATA SECTION containing global variables
+- HEAP containing mmr dynamically allocated during run time
+- STACK containing tmp data
+	- function param, return addr, local var
+- current activity including PC, processor registers
+
+*insert Process Concept slide*
+
+Heap and Stack:
+THE STACK:
+- tmp mmr where var are stored while a funct. is executing
+- when the funct. finishes, the mmr is cleared automatically
+
+THE HEAP: mmr that the programmer can use for the pplication in a more manual way.
+- You have to allocate mmr, use it, and then free it up afterwards all by hand.
+
+Process Elements:
+- Two essential elements of the a process are
+
+PROGRAM CODE: which may be shared w/ other processes that are executing the same program
+
+A SET OF DATA ASSOCIATED W/ THAT CODE: when the processor begins to execute the program code, we refere to this executing entity as a PROCESS
+
+Process Control Block:
+- Contains the process elements
+- It is possible to interrupt a running process and later resume execution as if the interruption had not occured
+- created and managed by the operating system 
+- key tool that allows support for multiple processes
+
+Process States:
+- TRACE: the behavior of an individual process by listing the sequence of instructions that execute for that process
+	- the behavior of the processor can be characterized by showing how the traces of various processes are interleaved
+- DISPATCHER: small program that switches the processor from one process to another
+
+
